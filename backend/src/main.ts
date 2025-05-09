@@ -8,9 +8,9 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/api/tasks', taskController.getAllTasks);
-app.post('/api/tasks', validateDto(CreateTaskDto), taskController.createTask);
-app.put('/api/tasks/:id', validateDto(UpdateTaskDto), taskController.updateTask);
-app.delete('/api/tasks/:id', taskController.deleteTask);
+app.get('/tasks', taskController.getAllTasks);
+app.post('/tasks', validateDto(CreateTaskDto), taskController.createTask);
+app.put('/tasks/:id', validateDto(UpdateTaskDto), taskController.updateTask);
+app.delete('/tasks/:id', taskController.deleteTask);
 
 export const api = functions.https.onRequest(app);
