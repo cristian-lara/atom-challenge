@@ -32,6 +32,12 @@ importers:
       axios:
         specifier: ^1.6.0
         version: 1.9.0
+      class-transformer:
+        specifier: ^0.5.1
+        version: 0.5.1
+      class-validator:
+        specifier: ^0.14.2
+        version: 0.14.2
       express:
         specifier: ^4.21.2
         version: 4.21.2
@@ -3130,6 +3136,9 @@ packages:
   '@types/triple-beam@1.3.5':
     resolution: {integrity: sha512-6WaYesThRMCl19iryMYP7/x2OVgCtbIVflDGFpWnb9irXI3UjYE4AzmYuiUKY1AJstGijoY+MgUszMgRxIYTYw==}
 
+  '@types/validator@13.15.0':
+    resolution: {integrity: sha512-nh7nrWhLr6CBq9ldtw0wx+z9wKnnv/uTVLA9g/3/TcOYxbpOSZE+MhKPmWqU+K0NvThjhv12uD8MuqijB0WzEA==}
+
   '@types/ws@8.18.1':
     resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
 
@@ -3834,6 +3843,12 @@ packages:
   cjson@0.3.3:
     resolution: {integrity: sha512-yKNcXi/Mvi5kb1uK0sahubYiyfUO2EUgOp4NcY9+8NX5Xmc+4yeNogZuLFkpLBBj7/QI9MjRUIuXrV9XOw5kVg==}
     engines: {node: '>= 0.3.0'}
+
+  class-transformer@0.5.1:
+    resolution: {integrity: sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw==}
+
+  class-validator@0.14.2:
+    resolution: {integrity: sha512-3kMVRF2io8N8pY1IFIXlho9r8IPUUIfHe2hYVtiebvAzU2XeQFXTv+XI4WX+TnXmtwXMDcjngcpkiPM0O9PvLw==}
 
   clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
@@ -6028,6 +6043,9 @@ packages:
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
+
+  libphonenumber-js@1.12.8:
+    resolution: {integrity: sha512-f1KakiQJa9tdc7w1phC2ST+DyxWimy9c3g3yeF+84QtEanJr2K77wAmBPP22riU05xldniHsvXuflnLZ4oysqA==}
 
   libsodium-wrappers@0.7.15:
     resolution: {integrity: sha512-E4anqJQwcfiC6+Yrl01C1m8p99wEhLmJSs0VQqST66SbQXXBoaJY0pF4BNjRYa/sOQAxx6lXAaAFIlx+15tXJQ==}
@@ -8545,6 +8563,10 @@ packages:
   validate-npm-package-name@6.0.0:
     resolution: {integrity: sha512-d7KLgL1LD3U3fgnvWEY1cQXoO/q6EQ1BSz48Sa149V/5zVTAbgmZIpyI8TRi6U9/JNyeYLlTKsEMPtLC27RFUg==}
     engines: {node: ^18.17.0 || >=20.5.0}
+
+  validator@13.15.0:
+    resolution: {integrity: sha512-36B2ryl4+oL5QxZ3AzD0t5SsMNGvTtQHpjgFO5tbNxfXbMFkY822ktCDe1MnlqV3301QQI9SLHDNJokDI+Z9pA==}
+    engines: {node: '>= 0.10'}
 
   varint@6.0.0:
     resolution: {integrity: sha512-cXEIW6cfr15lFv563k4GuVuW/fiwjknytD37jIOLSdSWuOI6WnO/oKwmP2FQTU2l01LP8/M5TSAJpzUaGe3uWg==}
@@ -13248,6 +13270,8 @@ snapshots:
 
   '@types/triple-beam@1.3.5': {}
 
+  '@types/validator@13.15.0': {}
+
   '@types/ws@8.18.1':
     dependencies:
       '@types/node': 18.16.9
@@ -14109,6 +14133,14 @@ snapshots:
   cjson@0.3.3:
     dependencies:
       json-parse-helpfulerror: 1.0.3
+
+  class-transformer@0.5.1: {}
+
+  class-validator@0.14.2:
+    dependencies:
+      '@types/validator': 13.15.0
+      libphonenumber-js: 1.12.8
+      validator: 13.15.0
 
   clean-stack@2.2.0: {}
 
@@ -16934,6 +16966,8 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
+  libphonenumber-js@1.12.8: {}
+
   libsodium-wrappers@0.7.15:
     dependencies:
       libsodium: 0.7.15
@@ -19697,6 +19731,8 @@ snapshots:
   validate-npm-package-name@5.0.1: {}
 
   validate-npm-package-name@6.0.0: {}
+
+  validator@13.15.0: {}
 
   varint@6.0.0: {}
 

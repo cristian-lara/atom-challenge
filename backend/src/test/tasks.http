@@ -1,0 +1,24 @@
+### Obtener todas las tareas
+GET http://localhost:5001/atom-challenge-eae5d/us-central1/api/tasks
+
+### Crear una nueva tarea
+POST http://localhost:5001/atom-challenge-eae5d/us-central1/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Mi primera tarea",
+  "description": "Esta es una descripción de prueba para mi primera tarea"
+}
+
+### Actualizar una tarea
+PUT http://localhost:5001/atom-challenge-eae5d/us-central1/api/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Tarea actualizada",
+  "description": "Esta es una descripción actualizada",
+  "completed": true
+}
+
+### Eliminar una tarea
+DELETE http://localhost:5001/atom-challenge-eae5d/us-central1/api/tasks/1 
