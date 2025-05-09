@@ -5,6 +5,16 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/backend",
+        "main": "backend/src/main.ts",
+        "tsConfig": "backend/tsconfig.app.json",
+        "assets": []
+      }
+    },
     "serve": {
       "continuous": true,
       "executor": "@nx/js:node",
