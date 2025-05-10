@@ -17,4 +17,8 @@ jobs:
           node-version: '22'
       - run: pnpm install
       - run: pnpm nx build backend
-      - run: npx firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }} --force
+      - name: Eliminar función existente
+        run: npx firebase functions:delete api --force --token ${{ secrets.FIREBASE_TOKEN }}
+        continue-on-error: true
+      - name: Desplegar nueva función
+        run: npx firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }} --force
