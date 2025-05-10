@@ -4,9 +4,9 @@ import { Task } from '@atom-challenge/shared';
 import { NotificationService } from '../../shared/notification/notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskFormComponent } from '../task-form/task-form.component';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserStorageService } from '../../shared/user-storage.service';
+import { getSmartDateText } from '../../shared/date-format.util';
 
 @Component({
   selector: 'app-task-list',
@@ -170,5 +170,10 @@ export class TaskListComponent implements OnInit {
   logout() {
     this.userStorage.clearEmail();
     this.router.navigate(['/login']);
+  }
+
+  getTaskDateText(task: Task): string {
+    if (!task.createdAt) return '';
+    return getSmartDateText(task.createdAt);
   }
 } 

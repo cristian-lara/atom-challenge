@@ -43,6 +43,7 @@
           <div class="task-content-col">
             <div class="task-title">{{ task.title }}</div>
             <div class="task-desc">{{ task.description }}</div>
+            <div class="task-date" *ngIf="task.createdAt">{{ getTaskDateText(task) }}</div>
           </div>
           <div class="task-actions-col action-row">
             <button mat-icon-button color="accent" (click)="completeTask(task)" aria-label="Completar tarea" matTooltip="Completar tarea">
@@ -75,6 +76,7 @@
           <div class="task-content-col">
             <div class="task-title completed">{{ task.title }}</div>
             <div class="task-desc completed">{{ task.description }}</div>
+            <div class="task-date" *ngIf="task.createdAt">{{ getTaskDateText(task) }}</div>
           </div>
           <div class="task-actions-col action-row">
             <button mat-icon-button color="primary" (click)="reopenTask(task)" aria-label="Reabrir tarea" matTooltip="Reabrir tarea">
