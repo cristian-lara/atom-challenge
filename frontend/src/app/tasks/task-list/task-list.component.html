@@ -64,7 +64,7 @@
         </button>
       </div>
       <mat-list *ngIf="completedTasks.length; else noCompleted">
-        <mat-list-item *ngFor="let task of completedTasks; trackBy: trackByTaskId" class="completed">  
+        <mat-list-item *ngFor="let task of completedTasks; trackBy: trackByTaskId" class="completed">
           <div class="task-content-col">
             <div class="task-title completed">{{ task.title }}</div>
             <div class="task-desc completed">{{ task.description }}</div>
@@ -72,9 +72,6 @@
           <div class="task-actions-col action-row">
             <button mat-icon-button color="primary" (click)="reopenTask(task)" aria-label="Reabrir tarea">
               <mat-icon>undo</mat-icon>
-            </button>
-            <button mat-icon-button [matMenuTriggerFor]="taskMenu" (click)="selectedTask = task" aria-label="Más opciones">
-              <mat-icon>more_vert</mat-icon>
             </button>
           </div>
         </mat-list-item>
