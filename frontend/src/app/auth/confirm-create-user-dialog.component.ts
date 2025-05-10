@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-confirm-create-user-dialog',
   template: `
@@ -60,6 +60,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     }
   `],
   standalone: true,
-  imports: [MatDialogModule]
+  imports: [MatDialogModule,   MatButtonModule,]
 })
 export class ConfirmCreateUserDialogComponent {} 
