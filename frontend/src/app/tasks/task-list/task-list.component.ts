@@ -5,6 +5,8 @@ import { NotificationService } from '../../shared/notification/notification.serv
 import { MatDialog } from '@angular/material/dialog';
 import { TaskFormComponent } from '../task-form/task-form.component';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserStorageService } from '../../shared/user-storage.service';
 
 @Component({
   selector: 'app-task-list',
@@ -17,6 +19,7 @@ export class TaskListComponent implements OnInit {
   loading = true;
   searchTerm = '';
   selectedTask?: Task;
+  userEmail = '';
 
   get pendingTasks(): Task[] {
     return this.filteredTasks.filter(t => !t.completed);
@@ -38,8 +41,12 @@ export class TaskListComponent implements OnInit {
   constructor(
     private taskService: TaskService,
     private notification: NotificationService,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private router: Router,
+    private userStorage: UserStorageService
+  ) {
+    this.userEmail = this.userStorage.getEmail() || '';
+  }
 
   ngOnInit() {
     this.taskService.getAll().subscribe({
@@ -158,5 +165,10 @@ export class TaskListComponent implements OnInit {
         this.notification.error('No se pudo reabrir la tarea');
       }
     });
+  }
+
+  logout() {
+    this.userStorage.clearEmail();
+    this.router.navigate(['/login']);
   }
 } 

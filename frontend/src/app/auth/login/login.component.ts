@@ -8,6 +8,7 @@ import { getFormErrorMessage } from '../../shared/form-error/form-error.util';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmCreateUserDialogComponent } from '../confirm-create-user-dialog.component';
+import { UserStorageService } from '../../shared/user-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,8 @@ export class LoginComponent {
     private router: Router,
     private notification: NotificationService,
     public loaderService: LoaderService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private userStorage: UserStorageService
   ) {
     this.loginForm = this.userFormService.createForm();
   }
@@ -41,6 +43,7 @@ export class LoginComponent {
     const email = this.emailControl?.value ?? '';
     this.userService.getByEmail(email).subscribe({
       next: (user) => {
+        this.userStorage.setEmail(email);
         this.notification.success('¡Bienvenido!');
         this.router.navigate(['/tasks']);
       },
@@ -54,10 +57,10 @@ export class LoginComponent {
   openCreateUserDialog(email: string) {
     const dialogRef = this.dialog.open(ConfirmCreateUserDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log('result', typeof result);
       if (result === true || result === 'true') {
         this.userService.create({ email }).subscribe({
           next: () => {
+            this.userStorage.setEmail(email);
             this.notification.success('Usuario creado exitosamente');
             this.router.navigate(['/tasks']);
           },

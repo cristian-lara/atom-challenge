@@ -1,4 +1,11 @@
 <div class="tasks-page-container">
+  <div class="tasks-topbar">
+    <span class="user-email">{{ userEmail }}</span>
+    <button mat-icon-button color="warn" class="logout-btn" (click)="logout()" aria-label="Cerrar sesión">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+
   <header class="tasks-header-row">
     <div class="tasks-header-main">
       <h1>MIS TAREAS</h1>
