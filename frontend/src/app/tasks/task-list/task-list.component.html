@@ -1,4 +1,35 @@
 <div class="task-list-container">
   <h2>Mis tareas</h2>
-  <!-- Aquí irá la lista de tareas -->
-</div> 
+
+  <ng-container *ngIf="loading; else loaded">
+    <div class="loader-list">
+      <mat-progress-spinner diameter="32" mode="indeterminate"></mat-progress-spinner>
+    </div>
+  </ng-container>
+
+  <ng-template #loaded>
+    <ng-container *ngIf="tasks.length > 0; else noTasks">
+      <mat-list>
+        <mat-list-item *ngFor="let task of tasks; trackBy: trackByTaskId">
+          <mat-icon matListIcon color="primary">{{ task.completed ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+          <div matLine class="task-title">{{ task.title }}</div>
+          <div matLine class="task-desc">{{ task.description }}</div>
+          <div matLine class="task-meta">
+            <span>{{ task.createdAt | date:'short' }}</span>
+            <span class="task-status" [ngClass]="{completed: task.completed}">
+              {{ task.completed ? 'Completada' : 'Pendiente' }}
+            </span>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </ng-container>
+    <ng-template #noTasks>
+      <div class="no-tasks">No tienes tareas pendientes.</div>
+    </ng-template>
+  </ng-template>
+</div>
+
+<!-- Botón flotante para agregar tarea -->
+<button mat-fab color="primary" class="add-task-fab" (click)="openAddTaskDialog()" aria-label="Agregar tarea">
+  <mat-icon>add</mat-icon>
+</button> 

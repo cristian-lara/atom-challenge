@@ -1,4 +1,21 @@
 <div class="task-form-container">
   <h3>Agregar / Editar tarea</h3>
-  <!-- Aquí irá el formulario de tarea -->
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form" autocomplete="off">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" required maxlength="100">
+      <mat-error *ngIf="taskForm.get('title')?.hasError('required')">El título es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description" rows="2" maxlength="500"></textarea>
+      <mat-error *ngIf="taskForm.get('description')?.hasError('required')">La descripción es obligatoria</mat-error>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-flat-button color="primary" type="submit" [disabled]="taskForm.invalid">Guardar</button>
+      <button mat-button mat-dialog-close type="button">Cancelar</button>
+    </div>
+  </form>
 </div> 
