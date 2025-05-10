@@ -1,16 +1,22 @@
-<div class="task-list-container">
-  <h2>Mis tareas</h2>
+<div class="tasks-page-container">
+  <header class="tasks-header">
+    <h1>Mis tareas</h1>
+    <p class="tasks-desc">Administra y organiza tus tareas pendientes y completadas.</p>
+    <mat-form-field appearance="outline" class="tasks-search">
+      <mat-label>Buscar tarea</mat-label>
+      <input matInput [(ngModel)]="searchTerm" placeholder="Buscar por título o descripción">
+      <button mat-icon-button matSuffix *ngIf="searchTerm" (click)="searchTerm=''" aria-label="Limpiar búsqueda">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+  </header>
 
-  <ng-container *ngIf="loading; else loaded">
-    <div class="loader-list">
-      <mat-progress-spinner diameter="32" mode="indeterminate"></mat-progress-spinner>
-    </div>
-  </ng-container>
-
-  <ng-template #loaded>
-    <ng-container *ngIf="tasks.length > 0; else noTasks">
-      <mat-list>
-        <mat-list-item *ngFor="let task of tasks; trackBy: trackByTaskId">
+  <div class="tasks-columns">
+    <section class="tasks-col">
+      <h2>Pendientes <span class="tasks-count">({{ pendingTasks.length }})</span></h2>
+      <mat-list *ngIf="pendingTasks.length; else noPending">
+        <mat-list-item *ngFor="let task of pendingTasks; trackBy: trackByTaskId">
           <mat-icon matListIcon color="primary">{{ task.completed ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
           <div matLine class="task-title">{{ task.title }}</div>
           <div matLine class="task-desc">{{ task.description }}</div>
@@ -22,11 +28,30 @@
           </div>
         </mat-list-item>
       </mat-list>
-    </ng-container>
-    <ng-template #noTasks>
-      <div class="no-tasks">No tienes tareas pendientes.</div>
-    </ng-template>
-  </ng-template>
+      <ng-template #noPending>
+        <div class="no-tasks">No tienes tareas pendientes.</div>
+      </ng-template>
+    </section>
+    <section class="tasks-col">
+      <h2>Realizadas <span class="tasks-count">({{ completedTasks.length }})</span></h2>
+      <mat-list *ngIf="completedTasks.length; else noCompleted">
+        <mat-list-item *ngFor="let task of completedTasks; trackBy: trackByTaskId">
+          <mat-icon matListIcon color="primary">{{ task.completed ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+          <div matLine class="task-title">{{ task.title }}</div>
+          <div matLine class="task-desc">{{ task.description }}</div>
+          <div matLine class="task-meta">
+            <span>{{ task.createdAt | date:'short' }}</span>
+            <span class="task-status" [ngClass]="{completed: task.completed}">
+              {{ task.completed ? 'Completada' : 'Pendiente' }}
+            </span>
+          </div>
+        </mat-list-item>
+      </mat-list>
+      <ng-template #noCompleted>
+        <div class="no-tasks">No tienes tareas completadas.</div>
+      </ng-template>
+    </section>
+  </div>
 </div>
 
 <!-- Botón flotante para agregar tarea -->

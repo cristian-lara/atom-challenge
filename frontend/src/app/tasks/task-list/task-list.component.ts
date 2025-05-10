@@ -4,6 +4,7 @@ import { Task } from '@atom-challenge/shared';
 import { NotificationService } from '../../shared/notification/notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskFormComponent } from '../task-form/task-form.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task-list',
@@ -14,6 +15,24 @@ import { TaskFormComponent } from '../task-form/task-form.component';
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   loading = true;
+  searchTerm = '';
+
+  get pendingTasks(): Task[] {
+    return this.filteredTasks.filter(t => !t.completed);
+  }
+
+  get completedTasks(): Task[] {
+    return this.filteredTasks.filter(t => t.completed);
+  }
+
+  get filteredTasks(): Task[] {
+    if (!this.searchTerm.trim()) return this.tasks;
+    const term = this.searchTerm.trim().toLowerCase();
+    return this.tasks.filter(task =>
+      task.title.toLowerCase().includes(term) ||
+      task.description.toLowerCase().includes(term)
+    );
+  }
 
   constructor(
     private taskService: TaskService,
