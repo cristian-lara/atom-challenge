@@ -44,3 +44,7 @@ Thumbs.db
 .angular
 
 .firebase/hosting.ZGlzdC9hcHBzL2Zyb250ZW5k.cache
+
+firebase-debug.log
+
+firestore-debug.log

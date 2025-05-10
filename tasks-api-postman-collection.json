@@ -113,12 +113,55 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Buscar usuario por email",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/users/{{email}}",
+							"protocol": "http",
+							"host": ["127.0.0.1"],
+							"port": "5001",
+							"path": ["atom-challenge-eae5d","us-central1","api","users","{{email}}"]
+						}
+					}
+				},
+				{
+					"name": "Crear usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/users",
+							"protocol": "http",
+							"host": ["127.0.0.1"],
+							"port": "5001",
+							"path": ["atom-challenge-eae5d","us-central1","api","users"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"usuario@ejemplo.com\"\n}"
+						}
+					}
+				}
+			]
 		}
 	],
 	"variable": [
 		{
 			"key": "taskId",
 			"value": "ejemplo123",
+			"type": "string"
+		},
+		{
+			"key": "email",
+			"value": "usuario@ejemplo.com",
 			"type": "string"
 		}
 	]
