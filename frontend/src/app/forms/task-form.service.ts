@@ -8,9 +8,8 @@ export class TaskFormService {
 
   createForm(task?: Partial<Task>): FormGroup {
     return this.fb.group({
-      title: [task?.title ?? '', Validators.required],
-      description: [task?.description ?? '', Validators.required],
-      completed: [task?.completed ?? false]
+      title: [task?.title ?? '', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      description: [task?.description ?? '', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
     });
   }
 } 
