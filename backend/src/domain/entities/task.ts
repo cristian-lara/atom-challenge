@@ -1,11 +1,13 @@
-export class Task {
+import { Task as ITask } from '@atom-challenge/shared';
+
+export class Task implements ITask {
   constructor(
-    public readonly id: string,
-    public readonly title: string,
-    public readonly description: string,
-    public readonly completed: boolean,
-    public readonly createdAt: Date = new Date(),
-    public readonly updatedAt: Date = new Date()
+    public id: string,
+    public title: string,
+    public description: string,
+    public completed: boolean,
+    public createdAt: string = new Date().toISOString(),
+    public updatedAt: string = new Date().toISOString()
   ) {}
 
   static create(title: string, description: string): Task {
@@ -14,8 +16,8 @@ export class Task {
       title,
       description,
       false,
-      new Date(),
-      new Date()
+      new Date().toISOString(),
+      new Date().toISOString()
     );
   }
 
@@ -26,7 +28,7 @@ export class Task {
       this.description,
       true,
       this.createdAt,
-      new Date()
+      new Date().toISOString()
     );
   }
 
@@ -37,7 +39,7 @@ export class Task {
       updates.description ?? this.description,
       updates.completed ?? this.completed,
       this.createdAt,
-      new Date()
+      new Date().toISOString()
     );
   }
 } 

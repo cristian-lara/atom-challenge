@@ -16,8 +16,8 @@ function toTask(id: string, data: any): Task {
     data.title,
     data.description,
     data.completed,
-    data.createdAt ? new Date(data.createdAt) : new Date(),
-    data.updatedAt ? new Date(data.updatedAt) : new Date()
+    data.createdAt ?? new Date().toISOString(),
+    data.updatedAt ?? new Date().toISOString()
   );
 }
 
@@ -38,8 +38,8 @@ export class FirestoreTaskRepository implements TaskRepository {
       title: task.title,
       description: task.description,
       completed: task.completed,
-      createdAt: task.createdAt.toISOString(),
-      updatedAt: task.updatedAt.toISOString()
+      createdAt: task.createdAt,
+      updatedAt: task.updatedAt
     });
     return new Task(
       docRef.id,
