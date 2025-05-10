@@ -1,11 +1,13 @@
 // Layout principal
 .tasks-page-container {
-  max-width: 1100px;
+  max-width: 90vw;
   margin: 2.5rem auto;
   padding: 2rem 1rem;
   background: #fafbfc;
   border-radius: 18px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  min-height: 85vh;
+
 }
 
 .tasks-header {
