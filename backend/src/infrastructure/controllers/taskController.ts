@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { TaskService } from '../../application/services/taskService';
-import { MemoryTaskRepository } from '../repositories/memoryTaskRepository';
+import { FirestoreTaskRepository } from '../../domain/repositories/firestoreTaskRepository';
 import { CreateTaskDto, UpdateTaskDto } from '../../domain/dtos/taskDto';
 
-const taskRepository = new MemoryTaskRepository();
+const taskRepository = new FirestoreTaskRepository();
 const taskService = new TaskService(taskRepository);
 
 export const taskController = {

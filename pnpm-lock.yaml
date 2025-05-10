@@ -41,6 +41,9 @@ importers:
       express:
         specifier: ^4.21.2
         version: 4.21.2
+      firebase-admin:
+        specifier: ^13.3.0
+        version: 13.3.0(encoding@0.1.13)
       firebase-functions:
         specifier: ^6.3.2
         version: 6.3.2(firebase-admin@13.3.0(encoding@0.1.13))
