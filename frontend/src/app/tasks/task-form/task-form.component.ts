@@ -1,8 +1,9 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Inject, OnInit } from '@angular/core';
 import { TaskFormService } from '../../forms/task-form.service';
 import { FormGroup } from '@angular/forms';
 import { Task } from '@atom-challenge/shared';
 import { getFormErrorMessage } from '../../shared/form-error/form-error.util';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-task-form',
@@ -10,17 +11,21 @@ import { getFormErrorMessage } from '../../shared/form-error/form-error.util';
   styleUrls: ['./task-form.component.scss'],
   standalone: false
 })
-export class TaskFormComponent {
+export class TaskFormComponent implements OnInit {
   @Input() task?: Task;
   @Output() save = new EventEmitter<Partial<Task>>();
   taskForm: FormGroup;
 
-  constructor(private taskFormService: TaskFormService) {
+  constructor(
+    private taskFormService: TaskFormService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
     this.taskForm = this.taskFormService.createForm();
   }
 
-  ngOnChanges() {
-    if (this.task) {
+  ngOnInit() {
+    if (this.data && this.data.task) {
+      this.task = this.data.task;
       this.taskForm = this.taskFormService.createForm(this.task);
     }
   }

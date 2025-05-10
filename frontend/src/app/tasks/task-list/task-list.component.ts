@@ -16,6 +16,7 @@ export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   loading = true;
   searchTerm = '';
+  selectedTask?: Task;
 
   get pendingTasks(): Task[] {
     return this.filteredTasks.filter(t => !t.completed);
@@ -80,6 +81,82 @@ export class TaskListComponent implements OnInit {
           this.loading = false;
         }
       });
+    });
+  }
+
+  completeTask(task: Task) {
+    if (!task.id) return;
+    this.taskService.update(task.id, { completed: true }).subscribe({
+      next: (updated) => {
+        this.tasks = this.tasks.map(t => t.id === task.id ? { ...t, completed: true } : t);
+        this.notification.success('Tarea marcada como completada');
+      },
+      error: () => {
+        this.notification.error('No se pudo completar la tarea');
+      }
+    });
+  }
+
+  completeAll() {
+    this.pendingTasks.forEach(task => this.completeTask(task));
+  }
+
+  editTask(task: Task) {
+    const dialogRef = this.dialog.open(TaskFormComponent, {
+      width: '100%',
+      maxWidth: '400px',
+      autoFocus: false,
+      data: { task },
+      panelClass: 'task-dialog-panel'
+    });
+
+    dialogRef.componentInstance.task = task;
+
+    dialogRef.componentInstance.save.subscribe((taskData: Partial<Task>) => {
+      dialogRef.close();
+      if (!task.id) return;
+      this.loading = true;
+      this.taskService.update(task.id, taskData).subscribe({
+        next: (updated) => {
+          this.notification.success('Tarea actualizada correctamente');
+          this.tasks = this.tasks.map(t => t.id === task.id ? { ...t, ...taskData } : t);
+          this.loading = false;
+        },
+        error: () => {
+          this.notification.error('Error al actualizar la tarea');
+          this.loading = false;
+        }
+      });
+    });
+  }
+
+  deleteTask(task: Task) {
+    if (!task.id) return;
+    this.taskService.delete(task.id).subscribe({
+      next: () => {
+        this.tasks = this.tasks.filter(t => t.id !== task.id);
+        this.notification.success('Tarea eliminada');
+      },
+      error: () => {
+        this.notification.error('No se pudo eliminar la tarea');
+      }
+    });
+  }
+
+  reopenAll() {
+    this.completedTasks.forEach(task => this.reopenTask(task));
+  }
+
+  reopenTask(task: Task) {
+    if (!task.id) return;
+    this.taskService.update(task.id, { completed: false }).subscribe({
+      next: () => {
+        this.tasks = this.tasks.map(t => t.id === task.id ? { ...t, completed: false } : t);
+        this.notification.success('Tarea reabierta');
+      },
+      error: () => {
+        this.notification.error('No se pudo reabrir la tarea');
+      }
     });
   }
 } 
