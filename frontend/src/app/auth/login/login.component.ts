@@ -6,6 +6,8 @@ import { FormGroup } from '@angular/forms';
 import { NotificationService } from '../../shared/notification/notification.service';
 import { getFormErrorMessage } from '../../shared/form-error/form-error.util';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmCreateUserDialogComponent } from '../confirm-create-user-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +29,8 @@ export class LoginComponent {
     private userService: UserService,
     private router: Router,
     private notification: NotificationService,
-    public loaderService: LoaderService
+    public loaderService: LoaderService,
+    private dialog: MatDialog
   ) {
     this.loginForm = this.userFormService.createForm();
   }
@@ -36,15 +39,36 @@ export class LoginComponent {
     this.error = null;
     if (this.loginForm.invalid) return;
     const email = this.emailControl?.value ?? '';
-    this.userService.create({ email }).subscribe({
-      next: () => {
-        this.notification.success('¡Ingreso exitoso!');
+    this.userService.getByEmail(email).subscribe({
+      next: (user) => {
+        this.notification.success('¡Bienvenido!');
         this.router.navigate(['/tasks']);
       },
       error: () => {
-        this.error = 'Error al iniciar sesión. Intenta de nuevo.';
-        this.notification.error(this.error);
+        // Usuario no existe, mostrar diálogo de confirmación
+        this.openCreateUserDialog(email);
       }
     });
   }
-} 
+
+  openCreateUserDialog(email: string) {
+    const dialogRef = this.dialog.open(ConfirmCreateUserDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('result', typeof result);
+      if (result === true || result === 'true') {
+        this.userService.create({ email }).subscribe({
+          next: () => {
+            this.notification.success('Usuario creado exitosamente');
+            this.router.navigate(['/tasks']);
+          },
+          error: () => {
+            this.error = 'No se pudo crear el usuario.';
+            this.notification.error(this.error);
+          }
+        });
+      } else {
+        this.notification.info('Creación de usuario cancelada');
+      }
+    });
+  }
+}
