@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { UserFormService } from '../../forms/user-form.service';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { FormGroup, ValidationErrors } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { NotificationService } from '../../shared/notification/notification.service';
+import { getFormErrorMessage } from '../../shared/form-error/form-error.util';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +15,8 @@ import { FormGroup, ValidationErrors } from '@angular/forms';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  loading = false;
   error: string | null = null;
+  public getFormErrorMessage = getFormErrorMessage;
 
   get emailControl() {
     return this.loginForm.get('email') ?? this.userFormService.createForm().get('email');
@@ -22,7 +25,9 @@ export class LoginComponent {
   constructor(
     private userFormService: UserFormService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private notification: NotificationService,
+    public loaderService: LoaderService
   ) {
     this.loginForm = this.userFormService.createForm();
   }
@@ -30,27 +35,16 @@ export class LoginComponent {
   onSubmit() {
     this.error = null;
     if (this.loginForm.invalid) return;
-    this.loading = true;
     const email = this.emailControl?.value ?? '';
     this.userService.create({ email }).subscribe({
       next: () => {
-        this.loading = false;
+        this.notification.success('¡Ingreso exitoso!');
         this.router.navigate(['/tasks']);
       },
       error: () => {
-        this.loading = false;
         this.error = 'Error al iniciar sesión. Intenta de nuevo.';
+        this.notification.error(this.error);
       }
     });
-  }
-
-  getErrorMessage(errors: ValidationErrors | null): string {
-    if (!errors) return '';
-    if (errors['required']) return 'Este campo es obligatorio';
-    if (errors['email']) return 'Ingresa un correo válido';
-    if (errors['minlength']) return 'El valor es demasiado corto';
-    if (errors['maxlength']) return 'El valor es demasiado largo';
-    if (errors['pattern']) return 'El formato no es válido';
-    return 'Campo inválido';
   }
 } 
