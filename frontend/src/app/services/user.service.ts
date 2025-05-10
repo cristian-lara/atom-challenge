@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseHttpService } from './base-http.service';
 import { Observable } from 'rxjs';
-import { User } from '@atom/models/user.model';
+import { User } from '@atom-challenge/shared';
 
 @Injectable({ providedIn: 'root' })
 export class UserService extends BaseHttpService<User> {
