@@ -1,0 +1,23 @@
+<div class="task-form-container">
+  <h3>Agregar / Editar tarea</h3>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form" autocomplete="off">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Título*</mat-label>
+      <input matInput formControlName="title" required maxlength="100">
+      <mat-hint align="end">{{ taskForm.get('title')?.value?.length || 0 }}/100</mat-hint>
+      <mat-error *ngIf="taskForm.get('title')?.invalid && (taskForm.get('title')?.dirty || taskForm.get('title')?.touched)">{{ getError('title') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descripción*</mat-label>
+      <textarea matInput formControlName="description" rows="4" maxlength="500"></textarea>
+      <mat-hint align="end">{{ taskForm.get('description')?.value?.length || 0 }}/500</mat-hint>
+      <mat-error *ngIf="taskForm.get('description')?.invalid && (taskForm.get('description')?.dirty || taskForm.get('description')?.touched)">{{ getError('description') }}</mat-error>
+    </mat-form-field>
+
+    <div class="form-actions align-right">
+      <button mat-button mat-dialog-close type="button">Cancelar</button>
+      <button mat-flat-button color="primary" type="submit" [disabled]="taskForm.invalid">Guardar</button>
+    </div>
+  </form>
+</div> 

@@ -1,0 +1,23 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      - run: pnpm install
+      - run: pnpm nx build backend
+      - name: Corregir package.json del backend
+        run: node scripts/fix-backend-package-json.js
+      - name: Desplegar nueva función
+        run: npx firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }} --force

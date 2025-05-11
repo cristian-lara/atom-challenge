@@ -1,0 +1,575 @@
+[debug] [2025-05-10T15:19:51.758Z] ----------------------------------------------------------------------
+[debug] [2025-05-10T15:19:51.759Z] Command:       /Users/cristianlara/.nvm/versions/node/v18.20.8/bin/node /Users/cristianlara/Documents/repos/manticore/atom-challenge/node_modules/firebase-tools/lib/bin/firebase.js deploy --only functions --force --debug
+[debug] [2025-05-10T15:19:51.759Z] CLI Version:   13.7.0
+[debug] [2025-05-10T15:19:51.759Z] Platform:      darwin
+[debug] [2025-05-10T15:19:51.759Z] Node Version:  v18.20.8
+[debug] [2025-05-10T15:19:51.760Z] Time:          Sat May 10 2025 10:19:51 GMT-0500 (Ecuador Time)
+[debug] [2025-05-10T15:19:51.760Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-10T15:19:51.797Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-10T15:19:51.797Z] > authorizing via signed-in user (cristian89lara@gmail.com)
+[debug] [2025-05-10T15:19:51.797Z] [iam] checking project atom-challenge-eae5d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-05-10T15:19:51.798Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions [none]
+[debug] [2025-05-10T15:19:51.798Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:19:51.799Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:19:52.322Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions 200
+[debug] [2025-05-10T15:19:52.323Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:19:52.324Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-10T15:19:52.324Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-10T15:19:52.771Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions 404
+[debug] [2025-05-10T15:19:52.771Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}}
+[debug] [2025-05-10T15:19:52.773Z] [functions] service account IAM check errored, deploy may fail: HTTP Error: 404, Unknown service account {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Unknown service account","status":404}
+[info] 
+[info] === Deploying to 'atom-challenge-eae5d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2025-05-10T15:19:52.777Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d [none]
+[debug] [2025-05-10T15:19:53.236Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d 200
+[debug] [2025-05-10T15:19:53.236Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d {"projectId":"atom-challenge-eae5d","projectNumber":"183028396113","displayName":"atom-challenge","name":"projects/atom-challenge-eae5d","resources":{"hostingSite":"atom-challenge-eae5d"},"state":"ACTIVE","etag":"1_07dcd634-291b-43a2-9bd6-12e2cccbbc9e"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-05-10T15:19:53.238Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-05-10T15:19:53.238Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:19:53.240Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-05-10T15:19:53.240Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:19:53.241Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [none]
+[debug] [2025-05-10T15:19:53.241Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:19:53.241Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [none]
+[debug] [2025-05-10T15:19:53.241Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:19:53.888Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com 200
+[debug] [2025-05-10T15:19:53.888Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-05-10T15:19:53.902Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com 200
+[debug] [2025-05-10T15:19:53.902Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-05-10T15:19:53.932Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com 200
+[debug] [2025-05-10T15:19:53.932Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-05-10T15:19:53.945Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com 200
+[debug] [2025-05-10T15:19:53.945Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-05-10T15:19:53.946Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig [none]
+[debug] [2025-05-10T15:19:54.434Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig 200
+[debug] [2025-05-10T15:19:54.434Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig {"projectId":"atom-challenge-eae5d","storageBucket":"atom-challenge-eae5d.firebasestorage.app"}
+[debug] [2025-05-10T15:19:54.435Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs [none]
+[debug] [2025-05-10T15:19:54.943Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs 200
+[debug] [2025-05-10T15:19:54.944Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs {}
+[error] 
+[error] Error: `runtime` field is required but was not found in firebase.json or package.json.
+To fix this, add the following lines to the `functions` section of your firebase.json:
+"runtime": "nodejs20" or set the "engine" field in package.json
+
+[debug] [2025-05-10T15:20:41.073Z] ----------------------------------------------------------------------
+[debug] [2025-05-10T15:20:41.074Z] Command:       /Users/cristianlara/.nvm/versions/node/v18.20.8/bin/node /Users/cristianlara/Documents/repos/manticore/atom-challenge/node_modules/firebase-tools/lib/bin/firebase.js deploy --only functions --force --debug
+[debug] [2025-05-10T15:20:41.074Z] CLI Version:   13.7.0
+[debug] [2025-05-10T15:20:41.075Z] Platform:      darwin
+[debug] [2025-05-10T15:20:41.075Z] Node Version:  v18.20.8
+[debug] [2025-05-10T15:20:41.076Z] Time:          Sat May 10 2025 10:20:41 GMT-0500 (Ecuador Time)
+[debug] [2025-05-10T15:20:41.076Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-10T15:20:41.112Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-10T15:20:41.113Z] > authorizing via signed-in user (cristian89lara@gmail.com)
+[debug] [2025-05-10T15:20:41.113Z] [iam] checking project atom-challenge-eae5d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-05-10T15:20:41.114Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions [none]
+[debug] [2025-05-10T15:20:41.114Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:20:41.114Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:20:41.681Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions 200
+[debug] [2025-05-10T15:20:41.682Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:20:41.683Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-10T15:20:41.683Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-10T15:20:42.127Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions 404
+[debug] [2025-05-10T15:20:42.128Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}}
+[debug] [2025-05-10T15:20:42.130Z] [functions] service account IAM check errored, deploy may fail: HTTP Error: 404, Unknown service account {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Unknown service account","status":404}
+[info] 
+[info] === Deploying to 'atom-challenge-eae5d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2025-05-10T15:20:42.134Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d [none]
+[debug] [2025-05-10T15:20:42.529Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d 200
+[debug] [2025-05-10T15:20:42.529Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d {"projectId":"atom-challenge-eae5d","projectNumber":"183028396113","displayName":"atom-challenge","name":"projects/atom-challenge-eae5d","resources":{"hostingSite":"atom-challenge-eae5d"},"state":"ACTIVE","etag":"1_07dcd634-291b-43a2-9bd6-12e2cccbbc9e"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-05-10T15:20:42.532Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-05-10T15:20:42.532Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:20:42.534Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-05-10T15:20:42.534Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:20:42.535Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [none]
+[debug] [2025-05-10T15:20:42.535Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:20:42.536Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [none]
+[debug] [2025-05-10T15:20:42.536Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:20:43.178Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com 200
+[debug] [2025-05-10T15:20:43.178Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-05-10T15:20:43.180Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com 200
+[debug] [2025-05-10T15:20:43.180Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-05-10T15:20:43.196Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com 200
+[debug] [2025-05-10T15:20:43.196Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-05-10T15:20:43.198Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com 200
+[debug] [2025-05-10T15:20:43.198Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-05-10T15:20:43.199Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig [none]
+[debug] [2025-05-10T15:20:43.671Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig 200
+[debug] [2025-05-10T15:20:43.672Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig {"projectId":"atom-challenge-eae5d","storageBucket":"atom-challenge-eae5d.firebasestorage.app"}
+[debug] [2025-05-10T15:20:43.673Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs [none]
+[debug] [2025-05-10T15:20:44.078Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs 200
+[debug] [2025-05-10T15:20:44.079Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs {}
+[error] 
+[error] Error: `runtime` field is required but was not found in firebase.json or package.json.
+To fix this, add the following lines to the `functions` section of your firebase.json:
+"runtime": "nodejs20" or set the "engine" field in package.json
+
+[debug] [2025-05-10T15:21:40.772Z] ----------------------------------------------------------------------
+[debug] [2025-05-10T15:21:40.773Z] Command:       /Users/cristianlara/.nvm/versions/node/v18.20.8/bin/node /Users/cristianlara/Documents/repos/manticore/atom-challenge/node_modules/firebase-tools/lib/bin/firebase.js deploy --only functions --force --debug
+[debug] [2025-05-10T15:21:40.774Z] CLI Version:   13.7.0
+[debug] [2025-05-10T15:21:40.774Z] Platform:      darwin
+[debug] [2025-05-10T15:21:40.774Z] Node Version:  v18.20.8
+[debug] [2025-05-10T15:21:40.775Z] Time:          Sat May 10 2025 10:21:40 GMT-0500 (Ecuador Time)
+[debug] [2025-05-10T15:21:40.775Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-10T15:21:40.812Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-10T15:21:40.812Z] > authorizing via signed-in user (cristian89lara@gmail.com)
+[debug] [2025-05-10T15:21:40.812Z] [iam] checking project atom-challenge-eae5d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-05-10T15:21:40.813Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions [none]
+[debug] [2025-05-10T15:21:40.814Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:21:40.814Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:21:41.308Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions 200
+[debug] [2025-05-10T15:21:41.309Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:21:41.310Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-10T15:21:41.310Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-10T15:21:41.782Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions 404
+[debug] [2025-05-10T15:21:41.783Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}}
+[debug] [2025-05-10T15:21:41.784Z] [functions] service account IAM check errored, deploy may fail: HTTP Error: 404, Unknown service account {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Unknown service account","status":404}
+[info] 
+[info] === Deploying to 'atom-challenge-eae5d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2025-05-10T15:21:41.788Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d [none]
+[debug] [2025-05-10T15:21:42.160Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d 200
+[debug] [2025-05-10T15:21:42.160Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d {"projectId":"atom-challenge-eae5d","projectNumber":"183028396113","displayName":"atom-challenge","name":"projects/atom-challenge-eae5d","resources":{"hostingSite":"atom-challenge-eae5d"},"state":"ACTIVE","etag":"1_07dcd634-291b-43a2-9bd6-12e2cccbbc9e"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-05-10T15:21:42.162Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-05-10T15:21:42.162Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:21:42.163Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-05-10T15:21:42.163Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:21:42.164Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [none]
+[debug] [2025-05-10T15:21:42.164Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:21:42.164Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [none]
+[debug] [2025-05-10T15:21:42.164Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:21:42.812Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com 200
+[debug] [2025-05-10T15:21:42.813Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-05-10T15:21:42.814Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com 200
+[debug] [2025-05-10T15:21:42.814Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-05-10T15:21:42.828Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com 200
+[debug] [2025-05-10T15:21:42.829Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-05-10T15:21:42.835Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com 200
+[debug] [2025-05-10T15:21:42.835Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-05-10T15:21:42.836Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig [none]
+[debug] [2025-05-10T15:21:43.311Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig 200
+[debug] [2025-05-10T15:21:43.312Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig {"projectId":"atom-challenge-eae5d","storageBucket":"atom-challenge-eae5d.firebasestorage.app"}
+[debug] [2025-05-10T15:21:43.313Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs [none]
+[debug] [2025-05-10T15:21:43.739Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs 200
+[debug] [2025-05-10T15:21:43.740Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs {}
+[error] 
+[error] Error: `runtime` field is required but was not found in firebase.json or package.json.
+To fix this, add the following lines to the `functions` section of your firebase.json:
+"runtime": "nodejs20" or set the "engine" field in package.json
+
+[debug] [2025-05-10T15:22:30.079Z] ----------------------------------------------------------------------
+[debug] [2025-05-10T15:22:30.080Z] Command:       /Users/cristianlara/.nvm/versions/node/v18.20.8/bin/node /Users/cristianlara/Documents/repos/manticore/atom-challenge/node_modules/firebase-tools/lib/bin/firebase.js deploy --only functions --force --debug
+[debug] [2025-05-10T15:22:30.081Z] CLI Version:   13.7.0
+[debug] [2025-05-10T15:22:30.081Z] Platform:      darwin
+[debug] [2025-05-10T15:22:30.081Z] Node Version:  v18.20.8
+[debug] [2025-05-10T15:22:30.082Z] Time:          Sat May 10 2025 10:22:30 GMT-0500 (Ecuador Time)
+[debug] [2025-05-10T15:22:30.082Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-10T15:22:30.122Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-10T15:22:30.122Z] > authorizing via signed-in user (cristian89lara@gmail.com)
+[debug] [2025-05-10T15:22:30.122Z] [iam] checking project atom-challenge-eae5d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-05-10T15:22:30.123Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions [none]
+[debug] [2025-05-10T15:22:30.124Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:22:30.124Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:22:30.664Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions 200
+[debug] [2025-05-10T15:22:30.664Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:22:30.665Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-10T15:22:30.665Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-10T15:22:31.097Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions 404
+[debug] [2025-05-10T15:22:31.098Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}}
+[debug] [2025-05-10T15:22:31.099Z] [functions] service account IAM check errored, deploy may fail: HTTP Error: 404, Unknown service account {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Unknown service account","status":404}
+[info] 
+[info] === Deploying to 'atom-challenge-eae5d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2025-05-10T15:22:31.104Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d [none]
+[debug] [2025-05-10T15:22:31.516Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d 200
+[debug] [2025-05-10T15:22:31.516Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d {"projectId":"atom-challenge-eae5d","projectNumber":"183028396113","displayName":"atom-challenge","name":"projects/atom-challenge-eae5d","resources":{"hostingSite":"atom-challenge-eae5d"},"state":"ACTIVE","etag":"1_07dcd634-291b-43a2-9bd6-12e2cccbbc9e"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-05-10T15:22:31.518Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-05-10T15:22:31.518Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:22:31.519Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-05-10T15:22:31.519Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:22:31.520Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [none]
+[debug] [2025-05-10T15:22:31.520Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:22:31.521Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [none]
+[debug] [2025-05-10T15:22:31.521Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:22:32.156Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com 200
+[debug] [2025-05-10T15:22:32.157Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-05-10T15:22:32.162Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com 200
+[debug] [2025-05-10T15:22:32.163Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-05-10T15:22:32.165Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com 200
+[debug] [2025-05-10T15:22:32.165Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-05-10T15:22:32.170Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com 200
+[debug] [2025-05-10T15:22:32.170Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-05-10T15:22:32.171Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig [none]
+[debug] [2025-05-10T15:22:32.674Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig 200
+[debug] [2025-05-10T15:22:32.674Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig {"projectId":"atom-challenge-eae5d","storageBucket":"atom-challenge-eae5d.firebasestorage.app"}
+[debug] [2025-05-10T15:22:32.675Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs [none]
+[debug] [2025-05-10T15:22:33.129Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs 200
+[debug] [2025-05-10T15:22:33.130Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs {}
+[error] 
+[error] Error: Detected node engine 18.x in package.json, which is not a supported version. Valid versions are 18, 20
+[debug] [2025-05-10T15:23:09.379Z] ----------------------------------------------------------------------
+[debug] [2025-05-10T15:23:09.380Z] Command:       /Users/cristianlara/.nvm/versions/node/v18.20.8/bin/node /Users/cristianlara/Documents/repos/manticore/atom-challenge/node_modules/firebase-tools/lib/bin/firebase.js deploy --only functions --force --debug
+[debug] [2025-05-10T15:23:09.380Z] CLI Version:   13.7.0
+[debug] [2025-05-10T15:23:09.380Z] Platform:      darwin
+[debug] [2025-05-10T15:23:09.380Z] Node Version:  v18.20.8
+[debug] [2025-05-10T15:23:09.381Z] Time:          Sat May 10 2025 10:23:09 GMT-0500 (Ecuador Time)
+[debug] [2025-05-10T15:23:09.382Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-10T15:23:09.422Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-10T15:23:09.422Z] > authorizing via signed-in user (cristian89lara@gmail.com)
+[debug] [2025-05-10T15:23:09.423Z] [iam] checking project atom-challenge-eae5d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-05-10T15:23:09.424Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions [none]
+[debug] [2025-05-10T15:23:09.424Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:23:09.424Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:23:09.932Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions 200
+[debug] [2025-05-10T15:23:09.932Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:23:09.933Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-10T15:23:09.933Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-10T15:23:10.380Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions 404
+[debug] [2025-05-10T15:23:10.382Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}}
+[debug] [2025-05-10T15:23:10.384Z] [functions] service account IAM check errored, deploy may fail: HTTP Error: 404, Unknown service account {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Unknown service account","status":404}
+[info] 
+[info] === Deploying to 'atom-challenge-eae5d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2025-05-10T15:23:10.388Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d [none]
+[debug] [2025-05-10T15:23:10.825Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d 200
+[debug] [2025-05-10T15:23:10.826Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d {"projectId":"atom-challenge-eae5d","projectNumber":"183028396113","displayName":"atom-challenge","name":"projects/atom-challenge-eae5d","resources":{"hostingSite":"atom-challenge-eae5d"},"state":"ACTIVE","etag":"1_07dcd634-291b-43a2-9bd6-12e2cccbbc9e"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-05-10T15:23:10.829Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-05-10T15:23:10.829Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:23:10.831Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-05-10T15:23:10.832Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:23:10.834Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [none]
+[debug] [2025-05-10T15:23:10.834Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:23:10.836Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [none]
+[debug] [2025-05-10T15:23:10.836Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:23:11.443Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com 200
+[debug] [2025-05-10T15:23:11.444Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-05-10T15:23:11.458Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com 200
+[debug] [2025-05-10T15:23:11.459Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-05-10T15:23:11.493Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com 200
+[debug] [2025-05-10T15:23:11.493Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-05-10T15:23:11.494Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com 200
+[debug] [2025-05-10T15:23:11.494Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-05-10T15:23:11.494Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig [none]
+[debug] [2025-05-10T15:23:11.943Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig 200
+[debug] [2025-05-10T15:23:11.944Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig {"projectId":"atom-challenge-eae5d","storageBucket":"atom-challenge-eae5d.firebasestorage.app"}
+[debug] [2025-05-10T15:23:11.944Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs [none]
+[debug] [2025-05-10T15:23:12.407Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs 200
+[debug] [2025-05-10T15:23:12.408Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs {}
+[error] 
+[error] Error: Detected node engine 18.x in package.json, which is not a supported version. Valid versions are 18, 20
+[debug] [2025-05-10T15:25:05.914Z] ----------------------------------------------------------------------
+[debug] [2025-05-10T15:25:05.915Z] Command:       /Users/cristianlara/.nvm/versions/node/v18.20.8/bin/node /Users/cristianlara/Documents/repos/manticore/atom-challenge/node_modules/firebase-tools/lib/bin/firebase.js deploy --only functions --force --debug
+[debug] [2025-05-10T15:25:05.916Z] CLI Version:   13.7.0
+[debug] [2025-05-10T15:25:05.916Z] Platform:      darwin
+[debug] [2025-05-10T15:25:05.916Z] Node Version:  v18.20.8
+[debug] [2025-05-10T15:25:05.917Z] Time:          Sat May 10 2025 10:25:05 GMT-0500 (Ecuador Time)
+[debug] [2025-05-10T15:25:05.917Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-10T15:25:05.956Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-10T15:25:05.956Z] > authorizing via signed-in user (cristian89lara@gmail.com)
+[debug] [2025-05-10T15:25:05.957Z] [iam] checking project atom-challenge-eae5d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-05-10T15:25:05.958Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions [none]
+[debug] [2025-05-10T15:25:05.958Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:25:05.958Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:25:06.542Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions 200
+[debug] [2025-05-10T15:25:06.543Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:25:06.544Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-10T15:25:06.544Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-10T15:25:07.198Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions 404
+[debug] [2025-05-10T15:25:07.199Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}}
+[debug] [2025-05-10T15:25:07.200Z] [functions] service account IAM check errored, deploy may fail: HTTP Error: 404, Unknown service account {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Unknown service account","status":404}
+[info] 
+[info] === Deploying to 'atom-challenge-eae5d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2025-05-10T15:25:07.205Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d [none]
+[debug] [2025-05-10T15:25:07.594Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d 200
+[debug] [2025-05-10T15:25:07.597Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d {"projectId":"atom-challenge-eae5d","projectNumber":"183028396113","displayName":"atom-challenge","name":"projects/atom-challenge-eae5d","resources":{"hostingSite":"atom-challenge-eae5d"},"state":"ACTIVE","etag":"1_07dcd634-291b-43a2-9bd6-12e2cccbbc9e"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-05-10T15:25:07.608Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-05-10T15:25:07.608Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:25:07.610Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-05-10T15:25:07.610Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:25:07.611Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [none]
+[debug] [2025-05-10T15:25:07.611Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:25:07.612Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [none]
+[debug] [2025-05-10T15:25:07.612Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:25:08.436Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com 200
+[debug] [2025-05-10T15:25:08.437Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-05-10T15:25:08.438Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com 200
+[debug] [2025-05-10T15:25:08.438Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-05-10T15:25:08.440Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com 200
+[debug] [2025-05-10T15:25:08.440Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-05-10T15:25:08.441Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com 200
+[debug] [2025-05-10T15:25:08.441Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-05-10T15:25:08.442Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig [none]
+[debug] [2025-05-10T15:25:09.040Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig 200
+[debug] [2025-05-10T15:25:09.040Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig {"projectId":"atom-challenge-eae5d","storageBucket":"atom-challenge-eae5d.firebasestorage.app"}
+[debug] [2025-05-10T15:25:09.041Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs [none]
+[debug] [2025-05-10T15:25:09.555Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs 200
+[debug] [2025-05-10T15:25:09.555Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs {}
+[debug] [2025-05-10T15:25:09.558Z] Validating nodejs source
+[warn] ⚠  functions: Runtime Node.js 18 was deprecated on 2025-04-30 and will be decommissioned on 2025-10-31, after which you will not be able to deploy without upgrading. Consider upgrading now to avoid disruption. See https://cloud.google.com/functions/docs/runtime-support for full details on the lifecycle policy 
+[debug] [2025-05-10T15:25:10.147Z] > [functions] package.json contents: {
+  "name": "backend",
+  "version": "1.0.0",
+  "engines": {
+    "node": "18",
+    "firebase-functions": "^4.5.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.11.0",
+    "firebase-functions": "^4.5.0"
+  },
+  "types": "./src/main.d.ts",
+  "main": "./src/main.js",
+  "type": "commonjs"
+}
+[debug] [2025-05-10T15:25:10.147Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2025-05-10T15:25:10.148Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-05-10T15:25:10.154Z] Found firebase-functions binary at '/Users/cristianlara/Documents/repos/manticore/atom-challenge/node_modules/.bin/firebase-functions'
+[info] Serving at port 8847
+
+[debug] [2025-05-10T15:25:10.913Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[error] Error: Failed to parse build specification:
+[error] - FirebaseError Unexpected key extensions. You may need to install a newer version of the Firebase CLI.
+[debug] [2025-05-10T15:28:13.098Z] ----------------------------------------------------------------------
+[debug] [2025-05-10T15:28:13.099Z] Command:       /Users/cristianlara/.nvm/versions/node/v18.20.8/bin/node /Users/cristianlara/.nvm/versions/node/v18.20.8/bin/firebase deploy --only functions --force --debug
+[debug] [2025-05-10T15:28:13.100Z] CLI Version:   13.7.0
+[debug] [2025-05-10T15:28:13.100Z] Platform:      darwin
+[debug] [2025-05-10T15:28:13.100Z] Node Version:  v18.20.8
+[debug] [2025-05-10T15:28:13.101Z] Time:          Sat May 10 2025 10:28:13 GMT-0500 (Ecuador Time)
+[debug] [2025-05-10T15:28:13.101Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-10T15:28:13.143Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-10T15:28:13.144Z] > authorizing via signed-in user (cristian89lara@gmail.com)
+[debug] [2025-05-10T15:28:13.144Z] [iam] checking project atom-challenge-eae5d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-05-10T15:28:13.145Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions [none]
+[debug] [2025-05-10T15:28:13.145Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:28:13.145Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:28:13.646Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions 200
+[debug] [2025-05-10T15:28:13.646Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:28:13.647Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-10T15:28:13.647Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-10T15:28:14.095Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions 404
+[debug] [2025-05-10T15:28:14.096Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}}
+[debug] [2025-05-10T15:28:14.096Z] [functions] service account IAM check errored, deploy may fail: HTTP Error: 404, Unknown service account {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Unknown service account","status":404}
+[info] 
+[info] === Deploying to 'atom-challenge-eae5d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2025-05-10T15:28:14.098Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d [none]
+[debug] [2025-05-10T15:28:14.593Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d 200
+[debug] [2025-05-10T15:28:14.593Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d {"projectId":"atom-challenge-eae5d","projectNumber":"183028396113","displayName":"atom-challenge","name":"projects/atom-challenge-eae5d","resources":{"hostingSite":"atom-challenge-eae5d"},"state":"ACTIVE","etag":"1_07dcd634-291b-43a2-9bd6-12e2cccbbc9e"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-05-10T15:28:14.594Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-05-10T15:28:14.594Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:28:14.596Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-05-10T15:28:14.596Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:28:14.597Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [none]
+[debug] [2025-05-10T15:28:14.597Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:28:14.597Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [none]
+[debug] [2025-05-10T15:28:14.597Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:28:15.247Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com 200
+[debug] [2025-05-10T15:28:15.247Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-05-10T15:28:15.249Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com 200
+[debug] [2025-05-10T15:28:15.249Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-05-10T15:28:15.270Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com 200
+[debug] [2025-05-10T15:28:15.271Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-05-10T15:28:15.273Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com 200
+[debug] [2025-05-10T15:28:15.273Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-05-10T15:28:15.274Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig [none]
+[debug] [2025-05-10T15:28:15.807Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig 200
+[debug] [2025-05-10T15:28:15.808Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig {"projectId":"atom-challenge-eae5d","storageBucket":"atom-challenge-eae5d.firebasestorage.app"}
+[debug] [2025-05-10T15:28:15.808Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs [none]
+[debug] [2025-05-10T15:28:16.336Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs 200
+[debug] [2025-05-10T15:28:16.336Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs {}
+[debug] [2025-05-10T15:28:16.339Z] Validating nodejs source
+[warn] ⚠  functions: Runtime Node.js 18 was deprecated on 2025-04-30 and will be decommissioned on 2025-10-31, after which you will not be able to deploy without upgrading. Consider upgrading now to avoid disruption. See https://cloud.google.com/functions/docs/runtime-support for full details on the lifecycle policy 
+[warn] ⚠  functions: Couldn't find firebase-functions package in your source code. Have you run 'npm install'? 
+[debug] [2025-05-10T15:28:16.341Z] getFunctionsSDKVersion encountered error: Cannot find module 'firebase-functions'
+Require stack:
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/index.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/deploy/functions/prepare.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorShared.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/emulator/controller.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/emulator/commandUtils.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/commands/database-get.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/commands/index.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/index.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/bin/firebase.js {"code":"MODULE_NOT_FOUND","requireStack":["/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js","/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js","/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/index.js","/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/deploy/functions/prepare.js","/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorShared.js","/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js","/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/emulator/controller.js","/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/emulator/commandUtils.js","/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/commands/database-get.js","/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/commands/index.js","/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/index.js","/Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/bin/firebase.js"]}
+[debug] [2025-05-10T15:28:16.343Z] checkFunctionsSDKVersion encountered error: Invalid Version:  {}
+[debug] [2025-05-10T15:28:16.343Z] > [functions] package.json contents: {
+  "name": "backend",
+  "version": "1.0.0",
+  "engines": {
+    "node": "18",
+    "firebase-functions": "^4.5.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.11.0",
+    "firebase-functions": "^4.5.0"
+  },
+  "types": "./src/main.d.ts",
+  "main": "./src/main.js",
+  "type": "commonjs"
+}
+[debug] [2025-05-10T15:28:16.344Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2025-05-10T15:28:16.344Z] Could not parse firebase-functions version '' into semver. Falling back to parseTriggers.
+[error] 
+[error] Error: Error parsing triggers: Cannot find module 'tslib'
+Require stack:
+- /Users/cristianlara/Documents/repos/manticore/atom-challenge/dist/apps/backend/src/main.js
+- /Users/cristianlara/.nvm/versions/node/v18.20.8/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/triggerParser.js
+
+Try running "npm install" in your functions directory before deploying.
+[debug] [2025-05-10T15:30:34.357Z] ----------------------------------------------------------------------
+[debug] [2025-05-10T15:30:34.358Z] Command:       /Users/cristianlara/.nvm/versions/node/v18.20.8/bin/node /Users/cristianlara/Documents/repos/manticore/atom-challenge/node_modules/firebase-tools/lib/bin/firebase.js deploy --only functions --force --debug
+[debug] [2025-05-10T15:30:34.359Z] CLI Version:   12.0.0
+[debug] [2025-05-10T15:30:34.359Z] Platform:      darwin
+[debug] [2025-05-10T15:30:34.359Z] Node Version:  v18.20.8
+[debug] [2025-05-10T15:30:34.361Z] Time:          Sat May 10 2025 10:30:34 GMT-0500 (Ecuador Time)
+[debug] [2025-05-10T15:30:34.362Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-10T15:30:34.401Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-10T15:30:34.401Z] > authorizing via signed-in user (cristian89lara@gmail.com)
+[debug] [2025-05-10T15:30:34.402Z] [iam] checking project atom-challenge-eae5d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-05-10T15:30:34.403Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions [none]
+[debug] [2025-05-10T15:30:34.403Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:30:34.403Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:30:34.997Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions 200
+[debug] [2025-05-10T15:30:34.997Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/atom-challenge-eae5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-10T15:30:34.997Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-10T15:30:34.997Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-10T15:30:35.510Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions 404
+[debug] [2025-05-10T15:30:35.510Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/atom-challenge-eae5d/serviceAccounts/atom-challenge-eae5d@appspot.gserviceaccount.com:testIamPermissions {"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}}
+[debug] [2025-05-10T15:30:35.511Z] [functions] service account IAM check errored, deploy may fail: HTTP Error: 404, Unknown service account {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Unknown service account","status":404}
+[info] 
+[info] === Deploying to 'atom-challenge-eae5d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2025-05-10T15:30:35.513Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d [none]
+[debug] [2025-05-10T15:30:36.023Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d 200
+[debug] [2025-05-10T15:30:36.023Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d {"projectId":"atom-challenge-eae5d","projectNumber":"183028396113","displayName":"atom-challenge","name":"projects/atom-challenge-eae5d","resources":{"hostingSite":"atom-challenge-eae5d"},"state":"ACTIVE","etag":"1_07dcd634-291b-43a2-9bd6-12e2cccbbc9e"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-05-10T15:30:36.024Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-05-10T15:30:36.024Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:30:36.025Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-05-10T15:30:36.025Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:30:36.026Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [none]
+[debug] [2025-05-10T15:30:36.026Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:30:36.026Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [none]
+[debug] [2025-05-10T15:30:36.026Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/atom-challenge-eae5d
+[debug] [2025-05-10T15:30:36.652Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com 200
+[debug] [2025-05-10T15:30:36.652Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-05-10T15:30:36.653Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com 200
+[debug] [2025-05-10T15:30:36.653Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-05-10T15:30:36.675Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com 200
+[debug] [2025-05-10T15:30:36.675Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-05-10T15:30:36.675Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com 200
+[debug] [2025-05-10T15:30:36.676Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/atom-challenge-eae5d/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-05-10T15:30:36.676Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig [none]
+[debug] [2025-05-10T15:30:37.252Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig 200
+[debug] [2025-05-10T15:30:37.252Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/atom-challenge-eae5d/adminSdkConfig {"projectId":"atom-challenge-eae5d","storageBucket":"atom-challenge-eae5d.firebasestorage.app"}
+[debug] [2025-05-10T15:30:37.252Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs [none]
+[debug] [2025-05-10T15:30:37.655Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs 200
+[debug] [2025-05-10T15:30:37.655Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/atom-challenge-eae5d/configs {}
+[debug] [2025-05-10T15:30:37.655Z] Validating nodejs source
+[debug] [2025-05-10T15:30:39.434Z] > [functions] package.json contents: {
+  "name": "backend",
+  "version": "1.0.0",
+  "engines": {
+    "node": "18",
+    "firebase-functions": "^4.5.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.11.0",
+    "firebase-functions": "^4.5.0",
+    "tslib": "^2.3.0"
+  },
+  "types": "./src/main.d.ts",
+  "main": "./src/main.js",
+  "type": "commonjs"
+}
+[debug] [2025-05-10T15:30:39.434Z] Building nodejs source
+[debug] [2025-05-10T15:30:39.435Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-05-10T15:30:39.438Z] Found firebase-functions binary at '/Users/cristianlara/Documents/repos/manticore/atom-challenge/node_modules/.bin/firebase-functions'
+[debug] [2025-05-10T15:30:39.722Z] Serving at port 8799
+
+[debug] [2025-05-10T15:30:40.019Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[error] Error: Failed to parse build specification:
+[error] - FirebaseError Unexpected key extensions. You may need to install a newer version of the Firebase CLI.

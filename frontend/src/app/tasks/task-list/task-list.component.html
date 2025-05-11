@@ -1,0 +1,93 @@
+<div class="tasks-page-container">
+  <div class="tasks-topbar">
+    <span class="user-email">{{ userEmail }}</span>
+    <button mat-icon-button color="warn" class="logout-btn" (click)="logout()" aria-label="Cerrar sesión" matTooltip="Cerrar sesión">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+
+  <header class="tasks-header-row">
+    <div class="tasks-header-main">
+      <h1>MIS TAREAS</h1>
+      <p class="tasks-desc">Administre sus tareas, cree, complete o reabra tareas fácilmente.</p>
+    </div>
+    <mat-icon class="tasks-header-icon" fontIcon="assignment_turned_in" color="primary" style="font-size: 3rem;"></mat-icon>
+  </header>
+
+  <div class="tasks-actions-row">
+    <mat-form-field appearance="outline" class="tasks-search">
+      <mat-label>Buscar tareas</mat-label>
+      <input matInput [(ngModel)]="searchTerm" placeholder="Filtrar por título o descripción">
+      <button mat-icon-button matSuffix *ngIf="searchTerm" (click)="searchTerm=''" aria-label="Limpiar búsqueda">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+    <button mat-flat-button color="primary" class="add-task-btn" (click)="openAddTaskDialog()" aria-label="Agregar nueva tarea">
+      <mat-icon>add</mat-icon>
+      Agregar nueva tarea
+    </button>
+  </div>
+
+  <div class="tasks-columns">
+    <section class="tasks-col">
+      <div class="tasks-col-header">
+        <h2>Pendientes <span class="tasks-count">({{ pendingTasks.length }})</span></h2>
+        <button mat-stroked-button color="accent" (click)="completeAll()" [disabled]="!pendingTasks.length">
+          <mat-icon>done_all</mat-icon>
+          Completar todas
+        </button>
+      </div>
+      <mat-list *ngIf="pendingTasks.length; else noPending">
+        <mat-list-item *ngFor="let task of pendingTasks; trackBy: trackByTaskId">
+          <div class="task-content-col">
+            <div class="task-title">{{ task.title }}</div>
+            <div class="task-desc">{{ task.description }}</div>
+            <div class="task-date" *ngIf="task.createdAt">{{ getTaskDateText(task) }}</div>
+          </div>
+          <div class="task-actions-col action-row">
+            <button mat-icon-button color="accent" (click)="completeTask(task)" aria-label="Completar tarea" matTooltip="Completar tarea">
+              <mat-icon>check_circle_outline</mat-icon>
+            </button>
+            <button mat-icon-button [matMenuTriggerFor]="taskMenu" (click)="selectedTask = task" aria-label="Más opciones" matTooltip="Más acciones">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+      <mat-menu #taskMenu="matMenu">
+        <button mat-menu-item *ngIf="selectedTask" (click)="editTask(selectedTask)"><mat-icon>edit</mat-icon>Editar</button>
+        <button mat-menu-item *ngIf="selectedTask" (click)="deleteTask(selectedTask)"><mat-icon>delete</mat-icon>Eliminar</button>
+      </mat-menu>
+      <ng-template #noPending>
+        <div class="no-tasks">No tienes tareas pendientes.</div>
+      </ng-template>
+    </section>
+    <section class="tasks-col">
+      <div class="tasks-col-header">
+        <h2>Realizadas <span class="tasks-count">({{ completedTasks.length }})</span></h2>
+        <button mat-stroked-button color="primary" (click)="reopenAll()" [disabled]="!completedTasks.length">
+          <mat-icon>refresh</mat-icon>
+          Reabrir todas
+        </button>
+      </div>
+      <mat-list *ngIf="completedTasks.length; else noCompleted">
+        <mat-list-item *ngFor="let task of completedTasks; trackBy: trackByTaskId" class="completed">
+          <div class="task-content-col">
+            <div class="task-title completed">{{ task.title }}</div>
+            <div class="task-desc completed">{{ task.description }}</div>
+            <div class="task-date" *ngIf="task.createdAt">{{ getTaskDateText(task) }}</div>
+          </div>
+          <div class="task-actions-col action-row">
+            <button mat-icon-button color="primary" (click)="reopenTask(task)" aria-label="Reabrir tarea" matTooltip="Reabrir tarea">
+              <mat-icon>undo</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+      <ng-template #noCompleted>
+        <div class="no-tasks">No tienes tareas completadas.</div>
+      </ng-template>
+    </section>
+  </div>
+</div> 
