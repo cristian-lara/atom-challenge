@@ -11,8 +11,21 @@ Este proyecto es un reto técnico fullstack que implementa:
 - **Monorepo:** Nx para gestión de apps y librerías compartidas
 - **CI/CD:** GitHub Actions para despliegue automático
 
+## Requerimientos
 
-## Estructura del monorepo
+### Versiones
+- **Node.js:** >= 22.x  (usa `.nvmrc` o `.node-version` para forzar versión)
+- **Angular:** 17.x
+- **Nx:** última versión estable
+- **pnpm:** recomendado para manejo de dependencias
+
+### Herramientas
+- **Firebase CLI:** Necesaria para desarrollo local y despliegue
+  ```bash
+  npm install -g firebase-tools
+  ```
+
+## Estructura del Proyecto
 
 ```
 atom-challenge/
@@ -30,65 +43,87 @@ atom-challenge/
 └── ...
 ```
 
-## Requerimientos de versiones
-- **Node.js:** >= 22.x  (usa `.nvmrc` o `.node-version` para forzar versión)
-- **Angular:** 17.x
-- **Nx:** última versión estable
-- **pnpm:** recomendado para manejo de dependencias
+## Desarrollo Local
 
-## Scripts útiles
+### Configuración Inicial
+
+1. Clona el repositorio y accede a la carpeta raíz
+2. Instala las dependencias:
+   ```bash
+   pnpm install
+   ```
+3. Selecciona la versión correcta de Node:
+   ```bash
+   nvm use 22
+   # o
+   node --version # debe ser 22.x
+   ```
+4. Inicia sesión en Firebase (si aún no lo has hecho):
+   ```bash
+   firebase login
+   ```
+
+### Ejecución del Proyecto
+
+1. Inicia el frontend en modo desarrollo:
+   ```bash
+   pnpm nx serve frontend
+   ```
+   El servidor de desarrollo de Angular estará disponible en `http://localhost:4200`
+
+2. En una nueva terminal, inicia los emuladores de Firebase:
+   ```bash
+   firebase emulators:start
+   ```
+   Esto iniciará:
+   - Emulador de Functions en `http://localhost:5001`
+   - Emulador de Firestore en `http://localhost:8080`
+   - Emulador de Hosting en `http://localhost:5000`
+   - UI de Emuladores en `http://localhost:4000`
+
+### Monitoreo y Logs
+
+- Accede a la UI de Emuladores en `http://localhost:4000`
+- Navega a la sección "Logs" para ver los logs de Functions y Firestore
+- Los logs también aparecerán en la consola donde ejecutaste `firebase emulators:start`
+
+### Detener los Servicios
+
+- Frontend: `Ctrl+C` en la terminal donde corre `nx serve`
+- Emuladores: `Ctrl+C` en la terminal de emuladores o `firebase emulators:stop`
+
+## Scripts Útiles
 
 - `pnpm nx build frontend` — Build del frontend Angular
 - `pnpm nx build backend` — Build del backend Express
 - `firebase deploy` — Despliegue manual a Firebase
 - `firebase emulators:start` — Prueba local con emuladores
 
-## CI/CD
-- Workflows de GitHub Actions para deploy automático de frontend y backend
-- Uso de secretos seguros (`FIREBASE_TOKEN`, `FIREBASE_SERVICE_ACCOUNT`, `FIREBASE_PROJECT_ID`). [Aquí puedes ver cómo configurar los secretos en GitHub Actions.](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
+## Despliegue
 
-## Cómo empezar
-
-1. Clona el repo y entra a la carpeta raíz
-2. Instala dependencias:
-   ```bash
-   pnpm install
-   ```
-3. Selecciona la versión de Node recomendada:
-   ```bash
-   nvm use 22
-   # o
-   node --version # debe ser 22.x
-   ```
-4. Configura tus variables de entorno y secretos
-5. Build y deploy manual:
+### Manual
+1. Build de las aplicaciones:
    ```bash
    pnpm nx build frontend
    pnpm nx build backend
+   ```
+2. Despliegue a Firebase:
+   ```bash
    firebase deploy
    ```
 
-## Onboarding para desarrolladores
+### Automático (CI/CD)
+- El proyecto usa GitHub Actions para despliegue automático
+- Se utilizan secretos seguros para la configuración:
+  - `FIREBASE_TOKEN`
+  - `FIREBASE_SERVICE_ACCOUNT`
+  - `FIREBASE_PROJECT_ID`
+- [Guía para configurar secretos en GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
 
-Para integrarse a este proyecto, no es necesario crear un nuevo proyecto en Firebase. Siga los siguientes pasos para configurar su entorno de desarrollo y conectarse al proyecto existente:
+## Notas para Desarrolladores
 
-1. Clone este repositorio y acceda a la carpeta raíz.
-2. Instale las dependencias del proyecto:
-   ```bash
-   pnpm install
-   ```
-3. Instale la CLI de Firebase si aún no la tiene instalada:
-   ```bash
-   npm install -g firebase-tools
-   ```
-4. Inicie sesión con una cuenta de Google que cuente con los permisos necesarios en el proyecto de Firebase:
-   ```bash
-   firebase login
-   ```
-5. El archivo `.firebaserc` ya está configurado para apuntar al proyecto correcto, por lo que no es necesario crear uno nuevo.
-6. Si requiere realizar despliegues, asegúrese de contar con los secretos y permisos necesarios, o solicítelos a un administrador del proyecto.
-7. Para desarrollo local, puede utilizar los emuladores de Firebase ejecutando:
-   ```bash
-   firebase emulators:start
-   ```
+- El archivo `.firebaserc` ya está configurado para el proyecto correcto
+- Para realizar despliegues, se requieren los secretos y permisos necesarios
+- Solicita acceso a un administrador del proyecto si no tienes los permisos necesarios
+- Los emuladores de Firebase son suficientes para desarrollo local
 
