@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { UserService } from '../../application/services/userService';
-import { FirestoreUserRepository } from '../repositories/firestoreUserRepository';
+import { FirestoreUserRepository } from '../../domain/repositories/firestoreUserRepository';
 
 const userService = new UserService(new FirestoreUserRepository());
 
@@ -23,4 +23,4 @@ export const userController = {
     user = await userService.create(email);
     return res.status(201).json(user);
   }
-}; 
+};
