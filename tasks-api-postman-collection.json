@@ -15,7 +15,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/tasks",
+							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/api/tasks",
 							"protocol": "http",
 							"host": [
 								"127.0.0.1"
@@ -41,7 +41,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/tasks",
+							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/api/tasks",
 							"protocol": "http",
 							"host": [
 								"127.0.0.1"
@@ -71,7 +71,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/tasks/{{taskId}}",
+							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/api/tasks/{{taskId}}",
 							"protocol": "http",
 							"host": [
 								"127.0.0.1"
@@ -96,7 +96,7 @@
 					"request": {
 						"method": "DELETE",
 						"url": {
-							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/tasks/{{taskId}}",
+							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/api/tasks/{{taskId}}",
 							"protocol": "http",
 							"host": [
 								"127.0.0.1"
@@ -122,7 +122,7 @@
 					"request": {
 						"method": "GET",
 						"url": {
-							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/users/{{email}}",
+							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/api/users/{{email}}",
 							"protocol": "http",
 							"host": ["127.0.0.1"],
 							"port": "5001",
@@ -138,7 +138,7 @@
 							{"key": "Content-Type", "value": "application/json"}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/users",
+							"raw": "http://127.0.0.1:5001/atom-challenge-eae5d/us-central1/api/api/users",
 							"protocol": "http",
 							"host": ["127.0.0.1"],
 							"port": "5001",
@@ -165,4 +165,4 @@
 			"type": "string"
 		}
 	]
-} 
+}

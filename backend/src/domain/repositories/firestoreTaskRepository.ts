@@ -6,7 +6,7 @@ import * as admin from 'firebase-admin';
 if (!admin.apps.length) {
   try {
     console.log('[FirestoreTaskRepository] Inicializando Firebase Admin');
-    admin.initializeApp();
+  admin.initializeApp();
     console.log('[FirestoreTaskRepository] Firebase Admin inicializado exitosamente');
   } catch (error) {
     console.error('[FirestoreTaskRepository] Error al inicializar Firebase Admin:', {
@@ -43,14 +43,14 @@ const collection = db.collection('tasks');
 
 function toTask(id: string, data: any): Task {
   try {
-    return new Task(
-      id,
-      data.title,
-      data.description,
-      data.completed,
-      data.createdAt ?? new Date().toISOString(),
-      data.updatedAt ?? new Date().toISOString()
-    );
+  return new Task(
+    id,
+    data.title,
+    data.description,
+    data.completed,
+    data.createdAt ?? new Date().toISOString(),
+    data.updatedAt ?? new Date().toISOString()
+  );
   } catch (error) {
     console.error('[FirestoreTaskRepository] Error al convertir datos a Task:', {
       error: error instanceof Error ? {
@@ -69,9 +69,9 @@ export class FirestoreTaskRepository implements TaskRepository {
   async getAllTasks(): Promise<Task[]> {
     try {
       console.log('[FirestoreTaskRepository] Obteniendo todas las tareas');
-      const snapshot = await collection.get();
+    const snapshot = await collection.get();
       console.log(`[FirestoreTaskRepository] Se obtuvieron ${snapshot.docs.length} tareas`);
-      return snapshot.docs.map(doc => toTask(doc.id, doc.data()));
+    return snapshot.docs.map(doc => toTask(doc.id, doc.data()));
     } catch (error) {
       console.error('[FirestoreTaskRepository] Error al obtener todas las tareas:', {
         error: error instanceof Error ? {
@@ -90,13 +90,13 @@ export class FirestoreTaskRepository implements TaskRepository {
   async getTaskById(id: string): Promise<Task | null> {
     try {
       console.log('[FirestoreTaskRepository] Obteniendo tarea por ID:', { id });
-      const doc = await collection.doc(id).get();
+    const doc = await collection.doc(id).get();
       if (!doc.exists) {
         console.log('[FirestoreTaskRepository] Tarea no encontrada:', { id });
         return null;
       }
       console.log('[FirestoreTaskRepository] Tarea encontrada:', { id });
-      return toTask(doc.id, doc.data());
+    return toTask(doc.id, doc.data());
     } catch (error) {
       console.error('[FirestoreTaskRepository] Error al obtener tarea por ID:', {
         error: error instanceof Error ? {
