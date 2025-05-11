@@ -1,11 +1,11 @@
 import express, { Request, Response, NextFunction } from 'express';
-import * as functions from 'firebase-functions';
 import cors from 'cors';
 import { taskController } from './infrastructure/controllers/taskController';
 import { validateDto } from './infrastructure/middlewares/validationMiddleware';
 import { CreateTaskDto, UpdateTaskDto } from './domain/dtos/taskDto';
 import { userController } from './infrastructure/controllers/userController';
 import { CreateUserDto } from './domain/dtos/userDto';
+import { onRequest } from 'firebase-functions/v2/https';
 
 const app = express();
 // TODO: Cambiar a variables de entorno
@@ -53,4 +53,4 @@ app.delete('/tasks/:id', taskController.deleteTask);
 app.get('/users/:email', userController.getUserByEmail);
 app.post('/users', validateDto(CreateUserDto), userController.createUser);
 
-export const api = functions.https.onRequest(app);
+export const api = onRequest({ timeoutSeconds: 300, cors: true }, app);

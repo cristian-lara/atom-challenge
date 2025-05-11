@@ -17,6 +17,8 @@ jobs:
           node-version: '22'
       - run: pnpm install
       - run: pnpm nx build backend
+      - name: Corregir package.json del backend
+        run: node scripts/fix-backend-package-json.js
       - name: Eliminar función existente
         run: npx firebase functions:delete api --force --token ${{ secrets.FIREBASE_TOKEN }}
         continue-on-error: true
