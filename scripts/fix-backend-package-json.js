@@ -4,8 +4,8 @@ const path = require('path');
 const pkg = {
   name: "backend",
   version: "0.0.1",
-  main: "main.js",
-  types: "main.d.ts",
+  "types": "./src/main.d.ts",
+  "main": "./src/main.js",
   dependencies: {
     express: "^4.21.2",
     cors: "^2.8.5",

@@ -12,6 +12,7 @@ export const taskController = {
       const tasks = await taskService.getAllTasks();
       res.json(tasks);
     } catch (error) {
+      console.error('Error al obtener las tareas:', error);
       res.status(500).json({ error: 'Error al obtener las tareas' });
     }
   },
@@ -22,6 +23,7 @@ export const taskController = {
       const task = await taskService.createTask(taskData);
       res.status(201).json(task);
     } catch (error) {
+      console.error('Error al crear la tarea:', error);
       res.status(500).json({ error: 'Error al crear la tarea' });
     }
   },
@@ -37,6 +39,7 @@ export const taskController = {
       }
       res.json(task);
     } catch (error) {
+      console.error('Error al actualizar la tarea:', error);
       res.status(500).json({ error: 'Error al actualizar la tarea' });
     }
   },
@@ -51,6 +54,7 @@ export const taskController = {
       }
       res.status(204).send();
     } catch (error) {
+      console.error('Error al eliminar la tarea:', error);
       res.status(500).json({ error: 'Error al eliminar la tarea' });
     }
   }

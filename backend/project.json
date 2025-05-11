@@ -31,7 +31,8 @@
             "node": "22"
           }
         }
-      }
+      },
+      "postTargetCommand": "node ../../scripts/fix-backend-package-json.js"
     },
     "serve": {
       "continuous": true,
